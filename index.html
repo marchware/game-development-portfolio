@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marchelino Rabgy Yovaro — Game Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- LOADING -->
+  <div id="loading-screen">
+    <div class="ld-bg"></div>
+    <div class="ld-content">
+      <div class="ld-waves"><div class="ld-wave w1"></div><div class="ld-wave w2"></div><div class="ld-wave w3"></div></div>
+      <div class="ld-center">
+        <div class="ld-logo">M</div>
+        <div class="ld-name">MARCHELINO</div>
+        <div class="ld-tagline">Game Developer</div>
+        <div class="ld-progress-wrap">
+          <div class="ld-progress"><div class="ld-fill" id="ld-fill"></div></div>
+          <div class="ld-pct" id="ld-pct">0%</div>
+        </div>
+        <div class="ld-status" id="ld-status">Initializing...</div>
+      </div>
+      <div class="ld-bubbles"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- INTRO VIDEO -->
+  <div id="intro-video-wrap">
+    <video id="vid-intro" autoplay muted playsinline loop>
+      <source src="public/Intro_Portfolio.mp4" type="video/mp4" />
+    </video>
+  </div>
+
+  <!-- CANVAS -->
+  <canvas id="seq-canvas"></canvas>
+
+  <!-- SCROLL HINT -->
+  <div id="scroll-hint">
+    <span class="hint-text">Scroll to Explore</span>
+    <div class="chevron-wrap">
+      <svg width="28" height="16" viewBox="0 0 28 16">
+        <polyline points="2,2 14,14 26,2" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCENE 1 — print("hello") + 2 portrait photos + 6 game thumbnails
+       Layout: text left | 2 photos right | thumbnails row below
+  ════════════════════════════════════════════════════════════ -->
+  <div class="panel-wrapper" id="pw-s1">
+    <div class="s1-layout">
+      <!-- Left: typing text -->
+      <div class="s1-left">
+        <p class="s1-code" id="s1-code"></p>
+        <h1 class="s1-heading">
+          I'm <span class="c-cyan">Marchel,</span><br/>
+          a <span class="c-grad">Game Developer!</span> 
+        </h1>
+      </div>
+      <!-- Right: 2 portrait photos -->
+      <div class="s1-photos">
+        <div class="s1-photo-wrap anim-photo">
+          <img src="public/Photo1Scene1.JPG" alt="Marchel 1" />
+        </div>
+        <div class="s1-photo-wrap anim-photo" style="animation-delay:0.15s">
+          <img src="public/Photo2Scene1.JPG" alt="Marchel 2" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCENE 2 — Game Developer & Luau Specialist
+       Layout: text left | 2×3 grid of game thumbnails right
+  ════════════════════════════════════════════════════════════ -->
+  <div class="panel-wrapper" id="pw-s2">
+    <div class="s2-layout">
+      <div class="s2-text">
+        <h2 class="s2-heading">
+          <span class="c-lime">Game Developer</span> &amp;<br/>
+          <span class="c-pink">Luau Specialist!</span>
+        </h2>
+        <p class="s2-body">
+          Dedicated to building high-fidelity<br/>
+          experiences on Roblox for <span class="c-yellow">over 5 years.</span> I<br/>
+          specialize in creating worlds where clean<br/>
+          code meets high-end visual storytelling.
+        </p>
+      </div>
+      <div class="s2-grid">
+        <div class="s2-thumb"><img src="public/Game1.png" alt=""/></div>
+        <div class="s2-thumb tall"><img src="public/Game2.png" alt=""/></div>
+        <div class="s2-thumb"><img src="public/Game3.png" alt=""/></div>
+        <div class="s2-thumb"><img src="public/Game4.png" alt=""/></div>
+        <div class="s2-thumb"><img src="public/Game5.png" alt=""/></div>
+        <div class="s2-thumb"><img src="public/Game6.png" alt=""/></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCENE 3 — Beautiful Design & Seamless Interaction
+       Layout: portrait phone mockup left (with prev/next) | text right
+  ════════════════════════════════════════════════════════════ -->
+  <div class="panel-wrapper" id="pw-s3">
+    <div class="s3-layout">
+      <!-- Left: phone-portrait carousel -->
+      <div class="s3-left">
+        <div class="s3-phone-wrap">
+          <p class="s3-proj-title" id="s3-proj-title">Project's Title</p>
+          <div class="s3-phone-frame">
+            <!-- slides -->
+            <div class="s3-slides" id="s3-slides">
+              <div class="s3-slide active"><img src="public/PhoneSlide1.png" alt=""/></div>
+              <div class="s3-slide"><img src="public/PhoneSlide2.png" alt=""/></div>
+              <div class="s3-slide"><img src="public/PhoneSlide3.png" alt=""/></div>
+              <div class="s3-slide"><img src="public/PhoneSlide4.png" alt=""/></div>
+              <div class="s3-slide"><img src="public/PhoneSlide5.png" alt=""/></div>
+            </div>
+          </div>
+          <!-- Navigation -->
+          <div class="s3-nav">
+            <button class="s3-arrow" id="s3-prev">
+              <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="15,4 7,12 15,20" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </button>
+            <span class="s3-counter" id="s3-counter">1/5</span>
+            <button class="s3-arrow" id="s3-next">
+              <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="9,4 17,12 9,20" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Right: text -->
+      <div class="s3-text">
+        <h2 class="s3-heading">
+          <span class="c-teal">Beautiful Design</span><br/>
+          &amp; <span class="c-pink">Seamless</span><br/>
+          Interaction.
+        </h2>
+        <p class="s3-body">
+          A game is more than just code, it's about how the player feels. I focus on creating clean, intuitive interfaces that look great and are easy to navigate. I make sure every button, menu, and animation feels <span class="c-lime">smooth</span> and <span class="c-yellow">responsive</span>, ensuring a great experience for players on both Mobile and PC.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCENE 4 — Mastering More Than Just One Engine
+       Layout: portrait video left (with play/pause + label) | center text | portrait video right (with play/pause + label)
+  ════════════════════════════════════════════════════════════ -->
+  <div class="panel-wrapper" id="pw-s4">
+  <div class="s4-layout">
+    <div class="s4-vid-block">
+      <div class="s4-phone-vid">
+        <video id="s4v1" muted playsinline loop>
+          <source src="public/VideoLeftScene4.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="s4-controls">
+        <p class="s4-vid-label">Marble Pop!</p>
+        <button class="vid-ctrl-btn" data-vid="s4v1">
+          <svg class="ic-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg class="ic-pause hidden" viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="s4-text">
+      <h2 class="s4-heading">
+        Mastering <span class="c-yellow">More Than</span><br/>
+        Just One Engine.
+      </h2>
+      <p class="s4-body">
+        By mastering engines like <span class="c-yellow">Godot</span> and <span class="c-pink">Unity</span> alongside Roblox, I've learned how to build smarter game systems. This diverse background helps me create more stable and polished games, no matter which platform I'm working on.
+      </p>
+    </div>
+
+    <div class="s4-vid-block">
+      <div class="s4-phone-vid">
+        <video id="s4v2" muted playsinline loop>
+          <source src="public/VideoRightScene4.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="s4-controls">
+        <p class="s4-vid-label">Robo Run</p>
+        <button class="vid-ctrl-btn" data-vid="s4v2">
+          <svg class="ic-play" viewBox="0 0 24 24"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg class="ic-pause hidden" viewBox="0 0 24 24"><rect x="5" y="3" width="4" height="18"/><rect x="15" y="3" width="4" height="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       SCENE 5 — Advanced Systems, Built from Scratch
+       Layout: text left | 16:9 video carousel right (with title, prev/next)
+  ════════════════════════════════════════════════════════════ -->
+ <div class="panel-wrapper" id="pw-s5">
+  <div class="s5-layout">
+    
+    <div class="s5-text">
+      <h2 class="s5-heading">
+        <span class="c-lime">Advanced Systems,</span><br/>
+        Built from Scratch.
+      </h2>
+      <p class="s5-body">
+        Over the past <span class="c-yellow">5 years</span>, I've focused on creating custom mechanics that make games feel unique. From complex AI to interactive environments, I handle the heavy logic so that the experience is always <span class="c-pink">smooth</span>, <span class="c-yellow">fun</span>, and <span class="c-lime">polished</span> for the player.
+      </p>
+    </div>
+
+    <div class="s5-vid-area">
+      
+      <p class="s5-proj-label" id="s5-proj-label">Project's Name</p>
+
+      <div class="s5-vid-frame">
+        <div class="s5-yt-slides" id="s5-slides">
+          <div class="s5-vslide active">
+            <iframe src="https://www.youtube.com/embed/4WLIMpyc15A?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="s5-vslide">
+            <iframe src="https://www.youtube.com/embed/9fWj81O2MG4?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="s5-vslide">
+            <iframe src="https://www.youtube.com/embed/C9szNJgqFVE?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="s5-vslide">
+            <iframe src="https://www.youtube.com/embed/m1TSjkNd14A?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="s5-vslide">
+            <iframe src="https://www.youtube.com/embed/lIMnGz4XdqY?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+          <div class="s5-vslide">
+            <iframe src="https://www.youtube.com/embed/j7OXBuycwG4?enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="s5-bottom-bar">
+        <div class="s5-nav">
+          <button class="s3-arrow" id="s5-prev">
+            <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="15,4 7,12 15,20" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </button>
+          <span class="s5-counter" id="s5-counter">1/6</span>
+          <button class="s3-arrow" id="s5-next">
+            <svg viewBox="0 0 24 24" width="16" height="16"><polyline points="9,4 17,12 9,20" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+  <!-- SCROLL DRIVER -->
+  <div id="scroll-driver">
+    <div id="zone-intro"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-identity reveal-f">
+        <div class="footer-dot"></div>
+        <h2 class="footer-name">Marchelino<br/>Rabgy Yovaro</h2>
+        <p class="footer-role">Game Developer · Luau Specialist · Godot Engineer</p>
+      </div>
+      <div class="footer-cta-row reveal-f" style="transition-delay:.12s">
+        <button class="cta-btn" data-page="work">
+          <img src="public/icon_project.png" class="cta-icon-img" alt="My Work"/>
+          <span class="cta-text"><strong>My Work</strong><small>6+ published projects</small></span>
+          <span class="cta-arr">↗</span>
+        </button>
+        <button class="cta-btn" data-page="skills">
+          <img src="public/icon_skills.png" class="cta-icon-img" alt="Skills"/>
+          <span class="cta-text"><strong>Skills</strong><small>Luau · Godot · Architecture</small></span>
+          <span class="cta-arr">↗</span>
+        </button>
+        <button class="cta-btn" data-page="contact">
+          <img src="public/icon_contact.png" class="cta-icon-img" alt="Contact"/>
+          <span class="cta-text"><strong>Contact</strong><small>Let's build together</small></span>
+          <span class="cta-arr">↗</span>
+        </button>
+      </div>
+      <div class="footer-socials reveal-f" style="transition-delay:.24s">
+        <a class="soc-pill" href="https://github.com/marchware" target="_blank">GitHub</a>
+        <a class="soc-pill" href="https://www.roblox.com/users/76705322/profile" target="_blank">Roblox Profile</a>
+        <a class="soc-pill" href="https://www.linkedin.com/in/marchelino-rabgy-yovaro-946998289/?skipRedirect=true" target="_blank">LinkedIn</a>
+        <a class="soc-pill" href="https://discord.com/users/izenshy" target="_blank">Discord</a>
+      </div>
+      <div class="footer-base reveal-f" style="transition-delay:.36s">
+        <span>© 2026 Marchelino Rabgy Yovaro — All rights reserved</span>
+        <span>Handcrafted · Deployed on Vercel</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

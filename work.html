@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Work — Marchelino Rabgy Yovaro</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="subpage.css" />
+  <style>
+    /* ── Expandable card additions ── */
+    .project-card {
+      cursor: pointer;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .project-card:hover { background: rgba(7,0,136,0.14); border-color: rgba(7,0,136,0.38); }
+
+    .proj-expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease;
+      opacity: 0;
+    }
+    .project-card.open .proj-expand {
+      max-height: 700px;
+      opacity: 1;
+    }
+
+    .proj-yt-wrap {
+      margin-top: 20px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+    .proj-yt-wrap iframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    .proj-detail-body {
+      margin-top: 16px;
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.62);
+    }
+
+    .proj-meta-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      margin-bottom: 4px;
+    }
+    .proj-year {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .proj-link-yt {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #4d6fff;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .proj-link-yt:hover { color: #fff; }
+
+    .proj-toggle-icon {
+      margin-left: auto;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.3);
+      transition: transform 0.35s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .project-card.open .proj-toggle-icon { transform: rotate(180deg); }
+
+    .proj-header-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="sub-bg"></div>
+
+  <nav class="sub-nav">
+    <a href="index.html#site-footer" class="back-btn">← Back</a>
+    <span class="nav-title">My Work</span>
+  </nav>
+
+  <main class="sub-main">
+    <div class="sub-header">
+      <img src="public/icon_project.png" class="sub-icon" alt="" />
+      <h1 class="sub-title">My Work</h1>
+      <p class="sub-subtitle">6 published Roblox projects — click any card to expand</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- 01 Spirit Feast Battle -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">01</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Strategy</span>
+                <span class="tag-pill">Tower Defense</span>
+              </div>
+              <h3 class="proj-name">Spirit Feast Battle</h3>
+              <p class="proj-desc">In early 2024, I created a game project called Spirit Feast Battle. This game is a tower defense game with a unique theme based on Indonesia's gerobak (food cart) culinary culture. Each tower in the game represents a different gerobak, and has its own special abilities inspired by the kind of food it sells.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2024</span>
+              <span class="tag-pill">Roblox Studio</span>
+              <span class="tag-pill">Smart AI</span>
+              <span class="tag-pill">Detection</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/4WLIMpyc15A" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              I worked on this game completely by myself and finished it in just 5 months. It includes many features that make the gameplay more interesting and strategic. Each tower can attack enemies in different ways, such as using explosions, speeding up attacks, throwing boomerangs, and more. Not only the towers, but the enemies in this game also have special abilities. Some enemies can teleport, some can steal resources, and some become faster when angry. Because of this, players need to think carefully and change their strategies as the game goes on.
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/18233940060/Spirit-Feast-Battle" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 Pet Obby -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">02</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Luau</span>
+                <span class="tag-pill">Obby</span>
+              </div>
+              <h3 class="proj-name">Pet Obby!</h3>
+              <p class="proj-desc">A fun and creative game I developed in early 2025. The game was fully completed in just 3 months with a small team of two people. I worked as the programmer, game designer, and UI designer, while my teammate handled texturing, 3D modeling, and environment design.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2025</span>
+              <span class="tag-pill">Roblox Studio</span>
+              <span class="tag-pill">Inventory System</span>
+              <span class="tag-pill">Gacha Economy</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/9fWj81O2MG4" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              The main idea of Pet Obby is simple but unique, you complete obstacle stages (obbies) by riding on a pet that adds a new layer of challenge and fun. Instead of just running and jumping like in a traditional obby. The game includes many exciting features to keep players engaged. One of them is the lucky spin, which gives players random rewards and boosts. Another important feature is egg hatching, where players can get new pets. Each egg has different chances of hatching rare pets, making the
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/127803200816500/Pet-Obby" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 03 Zombie Chase -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">03</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Obby</span>
+                <span class="tag-pill">AI</span>
+              </div>
+              <h3 class="proj-name">Zombie Chase</h3>
+              <p class="proj-desc">My first ever game I created on Roblox Studio. This game has a simple genre (Parkour / Obby) that uses an AI implementation for a feature that hasn’t been on other games before. The main goal for this game is to get to the finish line while you need to go through all the obstacles while being chased by the zombies.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2021</span>
+              <span class="tag-pill">Pathfinding</span>
+              <span class="tag-pill">AI Behavior</span>
+              <span class="tag-pill">Multiplayer</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/C9szNJgqFVE" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              One of the game’s main features is that the parkour course changes every round. This means that each time a player starts a new game, the obstacle layout will be different. This makes the game more challenging and keeps the gameplay fresh, so players cannot just memorize one path, they have to stay focused and adapt to every new round. The game also provides over 5 different maps, each with its own look and feel. These maps offer different environments, giving players a variety of experiences and increasing the game’s replay value. 
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/6600383601/Zombie-Chase" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 04 Mount Putri -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">04</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Obby</span>
+                <span class="tag-pill">Adventure</span>
+              </div>
+              <h3 class="proj-name">Mount Putri</h3>
+              <p class="proj-desc">I decided to follow a popular trend on Roblox: mountain climbing games. I created a new game called Mount Putri. While many players were looking for mountain-themed games, I wanted to make sure my version felt different and more exciting than the ones already on the charts.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2025</span>
+              <span class="tag-pill">Exploration</span>
+              <span class="tag-pill">Obstacles</span>
+              <span class="tag-pill">Parkour</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/m1TSjkNd14A" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              The most unique feature of Mount Putri is the transportation system. Instead of just walking to the top, players can ride a cart that travels all the way around the mountain. I worked hard to design a track that gives players a beautiful panoramic view of the entire landscape from different angles. This makes the gameplay much more immersive and relaxing, as players can enjoy the scenery while they move through the map. I also spent time making the cart movement smooth so that the experience feels high-quality and fun for everyone who joins. I also added special obstacles that you won’t find in other mountain games. This project helped me improve my skills in environment design and vehicle scripting. Even though I followed a popular trend, Mount Putri shows that I can take a common idea and add my own creative twist to make it stand out for the players.
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/138256769157809/Mount-Putri" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Roadshop Keeper -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">05</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Luau</span>
+                <span class="tag-pill">Simulation</span>
+              </div>
+              <h3 class="proj-name">Roadshop Keeper</h3>
+              <p class="proj-desc">A horror experience where players take on the role of a young character who is left in charge of their uncle’s roadside shop while he is away on a trip to Jakarta. Strange things happens and players must navigate a series of chilling events.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2025</span>
+              <span class="tag-pill">Multiple Choice</span>
+              <span class="tag-pill">Interactive</span>
+              <span class="tag-pill">Smart NPC</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/lIMnGz4XdqY" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              This project was developed by a team of four: two 3D modelers/texturers, one game tester, and myself as the programmer and game designer. I was responsible for the core game mechanics, system implementation, UI design, and narrative design, bringing the overall vision to life through interactive gameplay. The game features a fully implemented enemy AI system and also includes story objectives that guide players through key plot points, an item interaction system that allows players to pick up and use objects in their environment, also a decision-making mechanic that forces players to choose between critical options (e.g., pick A or B) that can alter the course of the story.
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/123711271660567/Roadshop-Keeper" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 06 Ultimate Troll Tower -->
+      <div class="project-card" onclick="toggleCard(this)">
+        <div class="proj-num">06</div>
+        <div class="proj-info">
+          <div class="proj-header-row">
+            <div style="flex:1">
+              <div class="proj-tags">
+                <span class="tag-pill">Roblox</span>
+                <span class="tag-pill">Luau</span>
+                <span class="tag-pill">Obby</span>
+              </div>
+              <h3 class="proj-name">Ultimate Troll Tower</h3>
+              <p class="proj-desc">A challenging troll obby tower with unpredictable traps, secret shortcuts, and competitive leaderboards.</p>
+            </div>
+            <span class="proj-toggle-icon">▼</span>
+          </div>
+
+          <div class="proj-expand">
+            <div class="proj-meta-row">
+              <span class="proj-year">2025</span>
+              <span class="tag-pill">Trap Systems</span>
+              <span class="tag-pill">Leaderboard</span>
+              <span class="tag-pill">Level Design</span>
+            </div>
+            <div class="proj-yt-wrap">
+              <iframe src="https://www.youtube.com/embed/j7OXBuycwG4" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <p class="proj-detail-body">
+              Ultimate Troll Tower is a high-difficulty obby experience with hand-crafted troll mechanics designed to surprise and challenge players. I engineered a modular trap system where each obstacle has configurable timing, trigger conditions, and reset behavior — making it easy to design new floors without rewriting logic. The game includes a global leaderboard tracking fastest completions, a checkpoint system with anti-cheat validation, and secret paths rewarding exploration.
+            </p>
+            <a class="proj-link-yt" href="https://www.roblox.com/games/123276294410474/Ultimate-Troll-Tower" target="_blank">
+              Play The Game ↗
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    function toggleCard(card) {
+      const isOpen = card.classList.contains('open');
+      // Tutup semua card lain
+      document.querySelectorAll('.project-card.open').forEach(c => c.classList.remove('open'));
+      // Toggle card yang diklik
+      if (!isOpen) card.classList.add('open');
+    }
+  </script>
+</body>
+</html>
