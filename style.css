@@ -888,3 +888,78 @@ body.cursor-hover #cursor-ring{width:42px;height:42px;border-color:rgba(77,111,2
   }
   .footer-name { font-size: 2rem; }
 }
+
+/* ════════════════════════════════════════════
+   SKIP BUTTON
+════════════════════════════════════════════ */
+#skip-btn {
+  position: absolute;
+  bottom: 36px;
+  right: 36px;
+  z-index: 10001;
+
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 18px;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.35);
+
+  cursor: default;            /* tidak bisa diklik saat countdown */
+  pointer-events: none;
+  user-select: none;
+
+  /* masuk dari bawah */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: skipFadeIn 0.5s var(--ease) 0.8s forwards;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
+}
+
+@keyframes skipFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* State aktif setelah hitung mundur selesai */
+#skip-btn.skip-ready {
+  color: rgba(255, 255, 255, 0.82);
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+#skip-btn.skip-ready:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+}
+
+#skip-btn.skip-ready:active {
+  transform: scale(0.95);
+}
+
+#skip-btn svg {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+#skip-btn.skip-ready svg { opacity: 1; }
+
+/* Mobile */
+@media (max-width: 768px) {
+  #skip-btn {
+    bottom: 24px;
+    right: 20px;
+    font-size: 0.72rem;
+    padding: 8px 14px;
+  }
+}

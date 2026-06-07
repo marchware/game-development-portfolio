@@ -589,29 +589,86 @@ function preloadAll(onProgress) {
   });
 }
 
+// ── SKIP BUTTON LOGIC ─────────────────────────────────────
+function injectSkipButton() {
+  const btn = document.createElement('button');
+  btn.id = 'skip-btn';
+  btn.innerHTML = `
+    <span id="skip-label">Skip in <span id="skip-countdown">5</span>s</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="13,5 20,12 13,19"/><polyline points="5,5 12,12 5,19"/>
+    </svg>
+  `;
+  document.getElementById('loading-screen').appendChild(btn);
+
+  let secondsLeft = 5;
+  const countdownEl = document.getElementById('skip-countdown');
+  const labelEl     = document.getElementById('skip-label');
+
+  // Hitung mundur 5 detik, lalu aktifkan tombol
+  const timer = setInterval(() => {
+    secondsLeft--;
+    if (secondsLeft > 0) {
+      countdownEl.textContent = secondsLeft;
+    } else {
+      clearInterval(timer);
+      labelEl.textContent = 'Skip';
+      btn.classList.add('skip-ready');
+      btn.addEventListener('click', () => {
+        skipLoading();
+      });
+    }
+  }, 1000);
+
+  return btn;
+}
+
+function skipLoading() {
+  // Tandai bahwa preload boleh berhenti / loading screen langsung tutup
+  loadScreen.classList.add('hidden');
+  // Draw frame pertama agar canvas langsung siap
+  drawFrame('s1', 0);
+}
+
 // ── INIT ─────────────────────────────────────────────────
 async function init() {
   setDriverHeight();
-  introVid.play().catch(()=>{});
+  introVid.play().catch(() => {});
   initScene3();
   initScene4();
   initScene5();
 
+  // Inject skip button (mulai hitung mundur dari awal)
+  injectSkipButton();
+
   let lastSt = '';
-  await preloadAll((loaded, total, sceneId, frameNum) => {
-    const pct = Math.round((loaded/total)*100);
+  let skipTriggered = false;
+
+  // Wrap preload agar bisa diinterrupt jika skip ditekan
+  const preloadPromise = preloadAll((loaded, total, sceneId, frameNum) => {
+    if (loadScreen.classList.contains('hidden')) {
+      skipTriggered = true;
+      return; // stop updating UI kalau sudah skip
+    }
+    const pct = Math.round((loaded / total) * 100);
     if (ldFill) ldFill.style.width = pct + '%';
     if (ldPct)  ldPct.textContent  = pct + '%';
     const st = `Loading ${sceneId.toUpperCase()} · frame ${frameNum}`;
     if (ldStatus && st !== lastSt) { ldStatus.textContent = st; lastSt = st; }
   });
 
-  if (ldFill)   ldFill.style.width   = '100%';
-  if (ldPct)    ldPct.textContent    = '100%';
-  if (ldStatus) ldStatus.textContent = 'Ready';
+  await preloadPromise;
 
-  await new Promise(r => setTimeout(r, 600));
-  loadScreen.classList.add('hidden');
+  // Kalau user tidak skip, tutup loading screen normal
+  if (!loadScreen.classList.contains('hidden')) {
+    if (ldFill)   ldFill.style.width   = '100%';
+    if (ldPct)    ldPct.textContent    = '100%';
+    if (ldStatus) ldStatus.textContent = 'Ready';
+
+    await new Promise(r => setTimeout(r, 600));
+    loadScreen.classList.add('hidden');
+  }
+
   drawFrame('s1', 0);
 }
 
