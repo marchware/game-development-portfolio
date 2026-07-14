@@ -591,28 +591,31 @@ function preloadAll(onProgress) {
 
 // ── SKIP BUTTON LOGIC ─────────────────────────────────────
 function injectSkipButton() {
-  const btn = document.createElement('button');
-  btn.id = 'skip-btn';
-  btn.innerHTML = `
-    <span id="skip-label">Skip in <span id="skip-countdown">5</span>s</span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="13,5 20,12 13,19"/><polyline points="5,5 12,12 5,19"/>
-    </svg>
+  const btnContainer = document.createElement('div');
+  btnContainer.id = 'skip-container';
+  btnContainer.innerHTML = `
+    <button id="skip-btn">
+      <span id="skip-label">Skip in <span id="skip-countdown">5</span>s</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="13,5 20,12 13,19"/><polyline points="5,5 12,12 5,19"/>
+      </svg>
+    </button>
+    <span class="skip-note">Recommended to let it load for the best experience</span>
   `;
-  document.getElementById('loading-screen').appendChild(btn);
+  document.getElementById('loading-screen').appendChild(btnContainer);
 
+  const btn = btnContainer.querySelector('#skip-btn');
   let secondsLeft = 5;
-  const countdownEl = document.getElementById('skip-countdown');
-  const labelEl     = document.getElementById('skip-label');
+  const countdownEl = btnContainer.querySelector('#skip-countdown');
+  const labelEl     = btnContainer.querySelector('#skip-label');
 
-  // Hitung mundur 5 detik, lalu aktifkan tombol
   const timer = setInterval(() => {
     secondsLeft--;
     if (secondsLeft > 0) {
       countdownEl.textContent = secondsLeft;
     } else {
       clearInterval(timer);
-      labelEl.textContent = 'Skip';
+      labelEl.textContent = 'Skip Anyway';
       btn.classList.add('skip-ready');
       btn.addEventListener('click', () => {
         skipLoading();
