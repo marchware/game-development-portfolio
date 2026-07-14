@@ -344,8 +344,8 @@ function initScene2Animations() {
 
 // ── SCENE 3 — Photo carousel ─────────────────────────────
 let s3Index = 0;
-const S3_TITLES = ['A','B','C','D','E'];
-const S3_TOTAL  = 5;
+const S3_TITLES = ['Spirit Feast Battle','Pet Obby!'];
+const S3_TOTAL  = 2;
 
 function initScene3() {
   const slides  = document.querySelectorAll('.s3-slide');

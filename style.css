@@ -938,6 +938,54 @@ body.cursor-hover #cursor-ring{width:42px;height:42px;border-color:rgba(77,111,2
   pointer-events: auto;
 }
 
+/* Container pembungkus tombol & teks rekomendasi */
+#skip-container {
+  position: absolute;
+  bottom: 40px; /* Sesuaikan dengan posisi tombol skip kamu sebelumnya */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 100;
+  text-align: center;
+}
+
+/* Tombol Skip Utama (Sesuaikan selector ini dengan styling tombol asli kamu jika ada) */
+#skip-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+  pointer-events: none; /* Mati sebelum 5 detik */
+}
+
+/* Ketika tombol siap diklik */
+#skip-btn.skip-ready {
+  opacity: 1;
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+#skip-btn.skip-ready:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Teks kecil info Best Experience */
 .skip-note {
   font-family: 'Outfit', sans-serif;
   font-size: 11px;
@@ -945,6 +993,11 @@ body.cursor-hover #cursor-ring{width:42px;height:42px;border-color:rgba(77,111,2
   color: rgba(255, 255, 255, 0.4);
   letter-spacing: 0.5px;
   transition: color 0.3s ease;
+}
+
+/* Animasi interaktif saat tombol di-hover */
+#skip-btn.skip-ready:hover + .skip-note {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 #skip-btn.skip-ready:hover {
